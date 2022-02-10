@@ -4,14 +4,14 @@ import 'package:test/test.dart';
 
 void main() {
   group('Login form tests: ', () {
-    FlutterDriver? driver;
+    late FlutterDriver driver;
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
 
     tearDownAll(() async {
-      await driver?.close();
+      await driver.close();
     });
 
     final fieldEmail = find.byValueKey('fieldEmail');
@@ -19,40 +19,40 @@ void main() {
     final buttonSend = find.byValueKey('buttonSend');
 
     test('Email field', () async {
-      await driver!.tap(fieldEmail);
-      await driver!.waitFor(find.text(''));
-      await driver!.enterText('ivanov@example.com');
-      await driver!.waitFor(find.text('ivanov@example.com'));
+      await driver.tap(fieldEmail);
+      await driver.waitFor(find.text(''));
+      await driver.enterText('ivanov@example.com');
+      await driver.waitFor(find.text('ivanov@example.com'));
     });
 
     test('Phone field', () async {
-      await driver!.tap(fieldPhone);
-      await driver!.waitFor(find.text(''));
-      await driver!.enterText('123456789');
-      await driver!.waitFor(find.text('123456789'));
+      await driver.tap(fieldPhone);
+      await driver.waitFor(find.text(''));
+      await driver.enterText('123456789');
+      await driver.waitFor(find.text('123456789'));
     });
 
     test('Button "Send" press', () async {
-      await driver!.tap(buttonSend);
+      await driver.tap(buttonSend);
     });
 
     test('Welcome text', () async {
       final welcomeText = find.text('Добро пожаловать');
-      expect(await driver!.getText(welcomeText), 'Добро пожаловать');
+      expect(await driver.getText(welcomeText), 'Добро пожаловать');
     });
   });
 
   //============================================
 
   group('Rigister form tests: ', () {
-    FlutterDriver? driver;
+    late FlutterDriver driver;
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
 
     tearDownAll(() async {
-      await driver?.close();
+      await driver.close();
     });
 
     final buttonSwitchToReg = find.byValueKey('switchLoginRegForm');
@@ -63,47 +63,47 @@ void main() {
     final buttonSend = find.byValueKey('buttonSend');
 
     test('Switch to the registration form', () async {
-      await driver!.tap(buttonSwitchToReg);
+      await driver.tap(buttonSwitchToReg);
       final regFormHeader = find.text('Регистрация');
-      expect(await driver!.getText(regFormHeader), 'Регистрация');
+      expect(await driver.getText(regFormHeader), 'Регистрация');
     });
 
     test('FirstName field', () async {
-      await driver!.tap(fieldFirstName);
-      await driver!.waitFor(find.text(''));
-      await driver!.enterText('ivan');
-      await driver!.waitFor(find.text('ivan'));
+      await driver.tap(fieldFirstName);
+      await driver.waitFor(find.text(''));
+      await driver.enterText('ivan');
+      await driver.waitFor(find.text('ivan'));
     });
 
     test('SecondName field', () async {
-      await driver!.tap(fieldSecondName);
-      await driver!.waitFor(find.text(''));
-      await driver!.enterText('ivanov');
-      await driver!.waitFor(find.text('ivanov'));
+      await driver.tap(fieldSecondName);
+      await driver.waitFor(find.text(''));
+      await driver.enterText('ivanov');
+      await driver.waitFor(find.text('ivanov'));
     });
 
     test('Email field', () async {
-      await driver!.tap(fieldEmail);
-      await driver!.waitFor(find.text(''));
-      await driver!.enterText('ivanov@example.com');
-      await driver!.waitFor(find.text('ivanov@example.com'));
+      await driver.tap(fieldEmail);
+      await driver.waitFor(find.text(''));
+      await driver.enterText('ivanov@example.com');
+      await driver.waitFor(find.text('ivanov@example.com'));
     });
 
     test('Phone field', () async {
-      await driver!.tap(fieldPhone);
-      await driver!.waitFor(find.text(''));
-      await driver!.enterText('123456789');
-      await driver!.waitFor(find.text('123456789'));
+      await driver.tap(fieldPhone);
+      await driver.waitFor(find.text(''));
+      await driver.enterText('123456789');
+      await driver.waitFor(find.text('123456789'));
     });
 
-    test('Button "Send" press test', () async {
-      await driver!.tap(buttonSend);
+    test('Button "Send" press', () async {
+      await driver.tap(buttonSend);
     });
 
-    test('Success text test', () async {
+    test('Success text', () async {
       final successText = find.text('Вы успешно зарегистрировались');
       expect(
-          await driver!.getText(successText), 'Вы успешно зарегистрировались');
+          await driver.getText(successText), 'Вы успешно зарегистрировались');
     });
   });
 }
